@@ -2,7 +2,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 const Tier = require('./models/tier.model.js');
+const User = require('./models/user.model.js');
 const tierroutes = require('./routes/tier.routes.js');
+const userroutes = require('./routes/user.routes.js');
 
 dotenv.config();
 connectDB();
@@ -12,6 +14,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/tiers', tierroutes);
+app.use('/users', userroutes);
 
 //API 1 Incomplete
 // app.post('/tiers', async (req, res) => {

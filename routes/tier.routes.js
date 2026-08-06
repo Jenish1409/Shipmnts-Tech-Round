@@ -16,4 +16,17 @@ router.post('/', tierValidationRules, async (req, res) => {
     }
 });
 
+
+router.get('/', async(req, res) => {
+    try {
+        const tiers = await Tier.find();
+        res.status(200).json({tiers});
+    } catch (error) {
+        res.status(500).json({
+            error: error.code,
+            message: error.message
+        });
+    }
+});
+
 module.exports = router;
